@@ -18,11 +18,13 @@ const timestampRouter = require('./routes/timestamp');
 const headerParserRouter = require('./routes/headerParser');
 const urlShortenerRouter = require('./routes/urlShortener');
 const exerciseTrackerRouter = require('./routes/exerciseTracker');
+const fileMetaDataRouter = require('./routes/fileMetaData');
 
 app.use(timestampRouter);
 app.use(headerParserRouter);
 app.use(urlShortenerRouter);
 app.use(exerciseTrackerRouter);
+app.use(fileMetaDataRouter);
 
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {

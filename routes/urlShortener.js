@@ -1,5 +1,6 @@
 const express = require('express');
 const dns = require('dns');
+const path = require('path');
 const router = express.Router();
 
 const urlDatabase = {};
@@ -35,6 +36,14 @@ router.get('/api/shorturl/:short_url', (req, res) => {
   } else {
     return res.json({ error: 'No short URL found for the given input' });
   }
+});
+
+router.get('/urlShortener', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/urlShortener.html'));
+});
+
+router.get('/urlShortener.css', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/urlShortener.css'));
 });
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
 
 router.get('/api/:date?', (req, res) => {
@@ -20,6 +21,14 @@ router.get('/api/:date?', (req, res) => {
     unix: date.getTime(),
     utc: date.toUTCString()
   });
+});
+
+router.get('/timestamp', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/timestamp.html'));
+});
+
+router.get('/timestamp.css', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/timestamp.css'));
 });
 
 module.exports = router;

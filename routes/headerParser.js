@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
 router.get('/api/whoami', (req, res) => {
   const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.socket.remoteAddress;
@@ -12,6 +13,14 @@ router.get('/api/whoami', (req, res) => {
       software
     });
   }
+});
+
+router.get('/headerParser', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/headerParser.html'));
+});
+
+router.get('/headerParser.css', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/headerParser.css'));
 });
 
 module.exports = router;
